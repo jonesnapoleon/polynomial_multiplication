@@ -1,6 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "point.h"
-#include "math.h"
 
 POINT MakePOINT (float X, float Y){
     POINT koordinat;
@@ -9,9 +9,10 @@ POINT MakePOINT (float X, float Y){
     return koordinat;
 } 
 
-void BacaPOINT (POINT * P){
+void BacaPOINT (POINT * P, int max){
     float x, y;
-    scanf("%f %f", &x, &y);
+    x = rand( ) % 100;
+    y = rand( ) % 100;
     *P = MakePOINT(x, y);
 }
 

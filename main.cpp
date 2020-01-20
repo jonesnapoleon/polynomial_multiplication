@@ -1,12 +1,14 @@
 #include <stdio.h>
+#include <time.h>
 #include "array.c"
 #include "point.c"
 
 int main(){
     TabPOINT T, THull;
     BacaIsiTabPOINT(&T);
+    int start = clock();
     MakeEmpty(&THull, Neff(T) * 2 + 3);
-    int iTHull = 1;
+    int iTHull = IdxMin;
     for(int i = IdxMin; i <= Neff(T); i ++){
         for(int j = i; j <= Neff(T); j ++){
             if(i != j){
@@ -22,6 +24,8 @@ int main(){
         }
     }
     Singelisasi(&THull);
+    int end = clock();
+    printf("Program ended after running for %.3f miliseconds\n", ((float)end - start));
     TulisIsiTabPOINT(THull);
     return 0;
 }

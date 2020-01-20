@@ -17,7 +17,7 @@ typedef struct {
 #define Absis(P) (P).X
 
 POINT MakePOINT (float X, float Y);
-void BacaPOINT (POINT * P);
+void BacaPOINT (POINT * P, int max);
 void TulisPOINT (POINT P);
 float Gradien (POINT P1, POINT P2);
 

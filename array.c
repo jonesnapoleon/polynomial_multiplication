@@ -1,15 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "array.h"
+#include <time.h>
 
 void MakeEmpty(TabPOINT *T, int maxel){
   TI(*T) = (POINT *) malloc((maxel+ 1) * sizeof(POINT));
-  MaxEl(*T) = maxel;
-  Neff(*T) = 0;
-}
-
-void MakeEmptyBool(TabBool *T, int maxel){
-  TI(*T) = (boolean *) malloc((maxel+ 1) * sizeof(boolean));
   MaxEl(*T) = maxel;
   Neff(*T) = 0;
 }
@@ -19,8 +14,9 @@ void BacaIsiTabPOINT(TabPOINT *T){
   scanf("%d", &N);
   MakeEmpty(T, N + 3);
   Neff(*T) = N;
+  srand(time(0));
   for(int i = IdxMin; i <= N; i++){
-    BacaPOINT(&Elmt(*T, i));
+    BacaPOINT(&Elmt(*T, i), 50);
   }
 }
 
@@ -35,15 +31,10 @@ void TulisIsiTabPOINT(TabPOINT T){
   printf("]");
 }
 
-void TulisIsiTabBool(TabBool F){
-  printf("[");
-  for(int i = IdxMin; i <= Neff(F); i ++){
-    if(Elmt(F, i)){ printf("true"); } else{ printf("false"); }
-    if(i != Neff(F)){
-      printf(",");
-    }
-  }
-  printf("]");
+void MakeEmptyBool(TabBool *T, int maxel){
+  TI(*T) = (boolean *) malloc((maxel+ 1) * sizeof(boolean));
+  MaxEl(*T) = maxel;
+  Neff(*T) = 0;
 }
 
 boolean DeterminasiFinalBoolean(TabBool B){
@@ -74,12 +65,13 @@ boolean Determinasi(TabPOINT T, int a, int b){
 }
 
 void Singelisasi(TabPOINT *T){
-  for(int i = IdxMin; i <= Neff(*T); i ++){
+  for(int i = 1; i <= Neff(*T); i ++){
     float X = Absis(Elmt(*T, i));
     float Y = Ordinat(Elmt(*T, i));
     for(int j = i + 1; j <= Neff(*T); j ++){
       if(X == Absis(Elmt(*T, j)) && Y == Ordinat(Elmt(*T, j))){
-        Elmt(*T, j) = Elmt(*T, Neff(*T));
+        Absis(Elmt(*T, j)) = Absis(Elmt(*T, Neff(*T)));
+        Ordinat(Elmt(*T, j)) = Ordinat(Elmt(*T, Neff(*T)));
         Neff(*T) --;
       }
     }
@@ -90,33 +82,3 @@ void Singelisasi(TabPOINT *T){
   Absis(Elmt(*T, Neff(*T))) = X;
   Ordinat(Elmt(*T, Neff(*T))) = Y;
 }
-
-
-// void MakeEmptyFloat(TabFloat *F, int maxel){
-//   TI(*F) = (float *) malloc((maxel+ 1) * sizeof(float));
-//   MaxEl(*F) = maxel;
-//   Neff(*F) = 0;
-// }
-
-// void BacaIsiTabFloat(int iTabPoint, TabPOINT T, TabFloat *F){
-//   MakeEmptyFloat(F, Neff(T) + 3);
-//   Neff(*F) = Neff(T) - 1;
-//   int iTabFloat = 1;
-//   for(int i = IdxMin; i <= Neff(T); i ++){
-//     if(i != iTabPoint){
-//       Elmt(*F, iTabFloat) = Gradien(Elmt(T, iTabPoint), Elmt(T, i));
-//       iTabFloat ++;
-//     }
-//   }
-// }
-
-// void TulisIsiTabFloat(TabFloat F){
-//   printf("[");
-//   for(int i = IdxMin; i <= Neff(F); i ++){
-//     printf("%.2f", Elmt(F, i));
-//     if(i != Neff(F)){
-//       printf(",");
-//     }
-//   }
-//   printf("]");
-// }

@@ -1,15 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <conio.h>
+#include <time.h>
 
 int main(){
     char a,b;
-    int x,y;
-    int a[11];
-    int indexa = 0;
-    for(int i = 0; i <= 4; i ++){
-        scanf("%c%d, %d%c", &a,&x,&y, &b);
-        a[indexa] = x;
-        printf("%d %d", x, y);
-        return 0;
+    float x,y;
+    int N;
+    scanf("%d", &N);
+    srand(time(0));
+    for(int i = 0; i <= N; i++){
+        x = rand( ) % 100;
+        y = rand( ) % 100;
+        printf("%.1f - %.1f\n", x, y);
     }
 }
