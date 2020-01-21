@@ -11,8 +11,8 @@ POINT MakePOINT (float X, float Y){
 
 void BacaPOINT (POINT * P, int max){
     float x, y;
-    x = rand( ) % 100;
-    y = rand( ) % 100;
+    x = rand( ) % max;
+    y = rand( ) % max;
     *P = MakePOINT(x, y);
 }
 
@@ -24,6 +24,6 @@ float Gradien (POINT P1, POINT P2){
     if(Absis(P1) == Absis(P2)){
         return 9999;
     }
-    return ( Ordinat(P2) - Ordinat(P1) ) /( Absis(P2) - Absis(P1) );
+    return (Ordinat(P2) - Ordinat(P1)) /(Absis(P2) - Absis(P1));
 }
 

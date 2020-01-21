@@ -1,6 +1,9 @@
 {
     "files.associations": {
         "math.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "point.c": "cpp",
+        "stdlib.h": "c",
+        "array.h": "c"
     }
 }

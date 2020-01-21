@@ -8,17 +8,12 @@
 #define IdxUndef -999
 
 typedef int IdxType;
+
 typedef struct {
   POINT *TI;
   int Neff;
   int MaxEl;
 } TabPOINT;
-
-typedef struct {
-  boolean *TI;
-  int Neff;
-  int MaxEl;
-} TabBool;
 
 #define Neff(T) (T).Neff
 #define TI(T) (T).TI
@@ -28,7 +23,6 @@ typedef struct {
 void MakeEmpty(TabPOINT *T, int maxel);
 void BacaIsiTabPOINT(TabPOINT *T);
 void TulisIsiTabPOINT(TabPOINT T);
-
 boolean Determinasi(TabPOINT T, int a, int b);
 
 #endif

@@ -8,11 +8,6 @@ typedef struct {
 	float Y;
 } POINT;
 
-typedef struct {
-	POINT P1;
-	POINT P2;
-} GARIS;
-
 #define Ordinat(P) (P).Y
 #define Absis(P) (P).X
 
