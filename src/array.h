@@ -9,26 +9,21 @@
 #define IdxMin 0
 #define IdxUndef -999
 
-typedef int IdxType;
-
 typedef struct {
   float *TI;
-  int Neff;
+  int Degree;
   int MaxEl;
 } TabFLOAT;
 
 
-#define Neff(T) (T).Neff
+#define Degree(T) (T).Degree
 #define TI(T) (T).TI
 #define Elmt(T, i) (T).TI[(i)]
 #define MaxEl(T) (T).MaxEl
 
 void MakeEmpty(TabFLOAT *T, int maxel);
-void BacaFLOAT(float * P, int max);
-void BacaIsi(TabFLOAT *T);
+void BacaIsi(TabFLOAT *T, int degree);
 void TulisIsi(TabFLOAT T);
 void Clear(TabFLOAT *C);
-void BruteForce(TabFLOAT *C, TabFLOAT *A, TabFLOAT *B);
-void DivideConquer(TabFLOAT *C, TabFLOAT *A, TabFLOAT *B);
 
 #endif

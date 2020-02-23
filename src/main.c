@@ -1,26 +1,58 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
+#include "bruteforce.h"
+#include "divideandconquer.h"
 #include "array.h"
 
 int main(){
-  TabFLOAT A, B, C;
-  printf("Polinom pertama\n"); Spread;
-  BacaIsi(&A);
-  TulisIsi(A); Spread; Nl;
-  printf("Polinom kedua\n"); Spread;
-  BacaIsi(&B);
-  TulisIsi(B); Spread; Nl;
-  float start = clock();
-  MakeEmpty(&C, Neff(A) + Neff(B) + 5);
-  Neff(C) = Neff(A) + Neff(B);
-  Clear(&C);
-  BruteForce(&C, &A, &B);
-  // DivideConquer(&C, &A, &B);
+  time_t t;
+  clock_t startBruteforce, endBruteforce, startDivideConquer, endDivideConquer;
+  srand((unsigned)time(&t));
 
-  printf("Hasil kali kedua polinom\n"); Spread;
+  TabFLOAT A, B, C, D; int N;
+  printf("Input polinom degree: ");
+  scanf("%d", &N);
+  
+  printf("Polinom pertama\n"); Spread;
+  BacaIsi(&A, N);
+  TulisIsi(A); Spread; Nl;
+  
+  printf("Polinom kedua\n"); Spread;
+  BacaIsi(&B, N);
+  TulisIsi(B); Spread; Nl;
+
+  // START BRUTEFORCE PROCESS
+  startBruteforce = clock();
+  int countAddBruteforce, countMultipleBruteforce;
+  MakeEmpty(&C, Degree(A) + Degree(B) + 5);
+  Degree(C) = Degree(A) + Degree(B);
+  Clear(&C);
+  BruteForce(&C, &A, &B, &countAddBruteforce, &countMultipleBruteforce);
+  endBruteforce = clock();
+
+  // START DIVIDE AND CONQUER PROCESS
+  startDivideConquer = clock();
+  int countAddDivideConquer, countMultipleDivideConquer;
+  MakeEmpty(&D, Degree(A) + Degree(B) + 5);
+  Degree(D) = Degree(A) + Degree(B);
+  Clear(&D);
+  DivideConquer(&D, &A, &B, &countAddDivideConquer, &countMultipleDivideConquer);
+  endDivideConquer = clock();
+
+  printf("Hasil kali kedua polinom secara bruteforce\n"); Spread;
+  printf("Jumlah pertambahan elemen di perkalian kedua polinom secara Bruteforce: %d\n", countAddBruteforce);
+  printf("Jumlah perkalian elemen di perkalian kedua polinom secara Bruteforce: %d\n", countMultipleBruteforce); Spread;
   TulisIsi(C); Spread; Nl;
-  float end = clock();
-  printf("Program were running for %.3f miliseconds", ((float)end - start));
+  
+  printf("Hasil kali kedua polinom secara divide and conquer\n"); Spread;
+  printf("Jumlah pertambahan elemen di perkalian kedua polinom secara DivideConquer: %d\n", countAddDivideConquer);
+  printf("Jumlah perkalian elemen di perkalian kedua polinom secara DivideConquer: %d\n", countMultipleDivideConquer); Spread;
+  TulisIsi(D); Spread; Nl;
+
+  printf("Bruteforce program was running for %.3f miliseconds\n", ((float)endBruteforce - startBruteforce));
+  printf("Divide and Conquer program was running for %.3f miliseconds\n", ((float)endDivideConquer - startDivideConquer));
+  
   return 0;
 }
 

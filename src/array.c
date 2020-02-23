@@ -1,24 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 #include "array.h"
 
 void MakeEmpty(TabFLOAT *T, int maxel){
   TI(*T) = (float *) malloc((maxel+ 1) * sizeof(float));
   MaxEl(*T) = maxel;
-  Neff(*T) = 0;
+  Degree(*T) = 0;
 }
 
-void BacaIsi(TabFLOAT *T){
-  int N;
-  printf("Input polinom degree: ");
-  scanf("%d", &N);
+void BacaIsi(TabFLOAT *T, int N){
   MakeEmpty(T, N + 3);
-  Neff(*T) = N;
-  srand(time(0));
-  for(int i = IdxMin; i <= Neff(*T); i++){
+  Degree(*T) = N;
+  for(int i = IdxMin; i <= Degree(*T); i++){
     float value = rand() % 100;
-    float sign = rand() % 2;
+    float sign = rand() % 100;
     if(sign == 1){
       Elmt(*T, i) = value * -1;
     }
@@ -29,8 +24,8 @@ void BacaIsi(TabFLOAT *T){
 }
 
 void TulisIsi(TabFLOAT T){
-  for(int i = Neff(T); i >= IdxMin; i --) {
-    if(i == Neff(T)){
+  for(int i = Degree(T); i >= IdxMin; i --) {
+    if(i == Degree(T) && i != IdxMin){
       if(Elmt(T, i) < 0){
         printf("- %.1f x^%d", Elmt(T, i) * -1, i);
       }
@@ -62,19 +57,10 @@ void TulisIsi(TabFLOAT T){
 }
 
 void Clear(TabFLOAT *C){
-  for(int i = IdxMin; i <= Neff(*C); i ++){
+  for(int i = IdxMin; i <= Degree(*C); i ++){
     Elmt(*C, i) = 0;
   }
 }
 
-void BruteForce(TabFLOAT *C, TabFLOAT *A, TabFLOAT *B){
-  for(int a = IdxMin; a <= Neff(*A); a ++){
-    for(int b = IdxMin; b <= Neff(*B); b ++){
-      Elmt(*C, a + b) += Elmt(*A, a) * Elmt(*B, b);
-    }
-  }
-}
 
-void DivideConquer(TabFLOAT *C, TabFLOAT *A, TabFLOAT *B){
-  
-}
+

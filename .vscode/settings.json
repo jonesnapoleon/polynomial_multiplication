@@ -4,6 +4,13 @@
         "stdio.h": "c",
         "point.c": "cpp",
         "stdlib.h": "c",
-        "array.h": "c"
+        "array.h": "c",
+        "algorithm": "cpp",
+        "vector": "cpp",
+        "iostream": "cpp",
+        "ostream": "cpp",
+        "time.h": "c",
+        "bruteforce.h": "c",
+        "divideandconquer.h": "c"
     }
 }
