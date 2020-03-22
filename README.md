@@ -1,13 +1,14 @@
-# TUGAS KECIL 2 STRATEGI ALGORITMA
 # POLINOM MULTIPLICATION - DIVIDE AND CONQUER ALGORITHM
 
-AUTHOR: JONES NAPOLEON AUTUMN
+> Tugas Kecil 2 Strategi Algoritma
+
+> Author: [Jones Napoleon](https://jonesnapoleon.web.app)
 
 ## PREREQUISITE
 ```
 g++ or gcc
 ```
-Installation availabe at http://www.cs.utah.edu/~alee/g++/g++old.html
+> Installation availabe at http://www.cs.utah.edu/~alee/g++/g++old.html
 
 ## HOW TO RUN
 ```
